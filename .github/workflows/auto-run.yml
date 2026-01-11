@@ -1,0 +1,18 @@
+name: Auto-Run Docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t my-boilerplate .
+
+      - name: Run Docker Container
+        run: docker run my-boilerplate
